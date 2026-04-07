@@ -20,8 +20,8 @@ The core conversion logic is found in the `Convert-TextToNotebook` function:
 ### Deployment
 *   **`Install.ps1`**: Copies the script to `$env:LOCALAPPDATA\Text2Notebook` and creates shortcuts (Desktop & Start Menu).
 *   **`Uninstall.ps1`**: Removes the artifacts created by the install script.
-*   **`Product.wxs`**: WiX Toolset v3.11 XML definition. Defines a per-user MSI installer that deploys the PowerShell script and sets registry keys for tracking.
-*   **`Build_MSI.ps1`**: Automates `candle.exe` and `light.exe` execution to build the MSI.
+*   **`WinMSI\Product.wxs`**: WiX Toolset v3.11 XML definition. Defines a per-user MSI installer that deploys the PowerShell script and sets registry keys for tracking.
+*   **`WinMSI\Build_MSI.ps1`**: Automates `candle.exe` and `light.exe` execution to build the MSI.
 
 ### Legacy/Dev
 *   **`Text2notebook2.ps1`**: A Windows Forms (WinForms) implementation of the GUI.

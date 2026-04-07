@@ -26,6 +26,13 @@ You can run the application without installing it:
 1. Right-click `Text2notebook_WPF.ps1`.
 2. Select **Run with PowerShell**.
 
+### Option 4: Scoop
+You can install both the GUI and CLI versions using [Scoop](https://scoop.sh/):
+```powershell
+scoop install https://raw.githubusercontent.com/llslim/text2notebook/main/text2notebook.json
+```
+Once installed, use `text2notebook` for the GUI or `text2notebook-cli` for the command-line interface.
+
 ## Building the MSI
 
 To build a standalone MSI installer, you need the **WiX Toolset v3.11**.
@@ -34,9 +41,9 @@ To build a standalone MSI installer, you need the **WiX Toolset v3.11**.
 2. Open PowerShell in the project directory.
 3. Run the build script:
    ```powershell
-   .\Build_MSI.ps1
+   .\WinMSI\Build_MSI.ps1
    ```
-4. The file `Text2Notebook.msi` will be generated in the same folder.
+4. The file `Text2Notebook.msi` will be generated in the `WinMSI` folder.
 
 ## Uninstallation
 
@@ -46,11 +53,20 @@ To build a standalone MSI installer, you need the **WiX Toolset v3.11**.
 ## File Structure
 
 *   `Text2notebook_WPF.ps1`: The main application script (WPF GUI).
+*   `text2notebook.ps1`: The CLI worker script.
+*   `text2notebook.json`: Scoop package manifest.
 *   `Text2notebook2.ps1`: Legacy WinForms version of the GUI.
 *   `Install.ps1`: Script to install the app to `%LOCALAPPDATA%`.
 *   `Uninstall.ps1`: Script to remove the app and shortcuts.
-*   `Product.wxs`: WiX XML configuration for building the MSI.
-*   `Build_MSI.ps1`: Script to compile the WiX source into an MSI.
+*   `WinMSI\Product.wxs`: WiX XML configuration for building the MSI.
+*   `WinMSI\Build_MSI.ps1`: Script to compile the WiX source into an MSI.
+
+## Requirements
+
+*   Windows 10 or 11
+*   PowerShell 5.1 or later
+*   .NET Framework (pre-installed on most Windows systems)ilding the MSI.
+*   `WinMSI\Build_MSI.ps1`: Script to compile the WiX source into an MSI.
 
 ## Requirements
 
