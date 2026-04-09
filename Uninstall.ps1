@@ -1,14 +1,14 @@
 # Copyright (c) LL Slim LLC
 
 # Define paths
-$InstallDir = Join-Path $env:LOCALAPPDATA "Text2Notebook"
-$SettingsDir = Join-Path $env:USERPROFILE ".text2notebook"
+$InstallDir = Join-Path $env:LOCALAPPDATA "ConvertQuoteMarks"
+$SettingsDir = Join-Path $env:USERPROFILE ".ConvertQuoteMarks"
 
 $DesktopPath = [Environment]::GetFolderPath("Desktop")
-$ShortcutFile = Join-Path $DesktopPath "Text2Notebook.lnk"
+$ShortcutFile = Join-Path $DesktopPath "ConvertQuoteMarks.lnk"
 
 $StartMenuPath = [Environment]::GetFolderPath("Programs")
-$StartMenuShortcutFile = Join-Path $StartMenuPath "Text2Notebook.lnk"
+$StartMenuShortcutFile = Join-Path $StartMenuPath "ConvertQuoteMarks.lnk"
 
 # 1. Remove Shortcuts
 if (Test-Path $ShortcutFile) {

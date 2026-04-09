@@ -1,8 +1,8 @@
 # Define location of WiX Toolset (Adjust if you installed elsewhere)
-$WixPath = "${env:ProgramFiles(x86)}\WiX Toolset v3.11\bin"
+$WixPath = "${env:ProgramFiles(x86)}\WiX Toolset v3.14\bin"
 
 if (-not (Test-Path $WixPath)) {
-    Write-Error "WiX Toolset not found at $WixPath.`nPlease install WiX Toolset v3.11 from https://wixtoolset.org/"
+    Write-Error "WiX Toolset not found at $WixPath.`nPlease install WiX Toolset v3.14 from https://wixtoolset.org/"
     exit
 }
 
@@ -11,7 +11,7 @@ $Light = Join-Path $WixPath "light.exe"
 
 $SourceFile = Join-Path $PSScriptRoot "Product.wxs"
 $ObjectFile = Join-Path $PSScriptRoot "Product.wixobj"
-$MsiFile    = Join-Path $PSScriptRoot "Text2Notebook.msi"
+$MsiFile    = Join-Path $PSScriptRoot "ConvertQuoteMarks.msi"
 
 Write-Host "Compiling WiX source..."
 & $Candle $SourceFile -out $ObjectFile

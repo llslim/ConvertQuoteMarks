@@ -1,13 +1,13 @@
 # Copyright (c) LL Slim LLC
 
 # Define paths
-$SourceScript = Join-Path $PSScriptRoot "Text2notebook_WPF.ps1"
-$InstallDir = Join-Path $env:LOCALAPPDATA "Text2Notebook"
-$InstalledScript = Join-Path $InstallDir "Text2notebook_WPF.ps1"
+$SourceScript = Join-Path $PSScriptRoot "ConvertQuoteMarks_WPF.ps1"
+$InstallDir = Join-Path $env:LOCALAPPDATA "ConvertQuoteMarks"
+$InstalledScript = Join-Path $InstallDir "ConvertQuoteMarks_WPF.ps1"
 $DesktopPath = [Environment]::GetFolderPath("Desktop")
-$ShortcutFile = Join-Path $DesktopPath "Text2Notebook.lnk"
+$ShortcutFile = Join-Path $DesktopPath "ConvertQuoteMarks.lnk"
 $StartMenuPath = [Environment]::GetFolderPath("Programs")
-$StartMenuShortcutFile = Join-Path $StartMenuPath "Text2Notebook.lnk"
+$StartMenuShortcutFile = Join-Path $StartMenuPath "ConvertQuoteMarks.lnk"
 
 # 1. Create Install Directory
 if (-not (Test-Path $InstallDir)) {
@@ -22,14 +22,14 @@ $WshShell = New-Object -ComObject WScript.Shell
 $Shortcut = $WshShell.CreateShortcut($ShortcutFile)
 $Shortcut.TargetPath = "powershell.exe"
 $Shortcut.Arguments = "-WindowStyle Hidden -ExecutionPolicy Bypass -File `"$InstalledScript`""
-$Shortcut.Description = "Text2Notebook Converter - (c) LL Slim LLC"
+$Shortcut.Description = "ConvertQuoteMarks Converter - (c) LL Slim LLC"
 $Shortcut.Save()
 
 # 4. Create Start Menu Shortcut
 $ShortcutSM = $WshShell.CreateShortcut($StartMenuShortcutFile)
 $ShortcutSM.TargetPath = "powershell.exe"
 $ShortcutSM.Arguments = "-WindowStyle Hidden -ExecutionPolicy Bypass -File `"$InstalledScript`""
-$ShortcutSM.Description = "Text2Notebook Converter - (c) LL Slim LLC"
+$ShortcutSM.Description = "ConvertQuoteMarks Converter - (c) LL Slim LLC"
 $ShortcutSM.Save()
 
 Write-Host "Installation Complete!"

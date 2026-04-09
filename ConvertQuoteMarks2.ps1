@@ -2,10 +2,9 @@ Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 
 # --- Configuration & Settings ---
-$ScriptDir = $PSScriptRoot
-if (-not $ScriptDir) { $ScriptDir = Get-Location }
-$WorkerScript = Join-Path $ScriptDir "text2notebook.ps1"
-$SettingsFile = Join-Path $ScriptDir "settings.json"
+$SettingsDir = Join-Path $env:USERPROFILE ".ConvertQuoteMarks"
+if (-not (Test-Path $SettingsDir)) { New-Item -Path $SettingsDir -ItemType Directory -Force | Out-Null }
+$SettingsFile = Join-Path $SettingsDir "settings.json"
 
 function Get-Settings {
     if (Test-Path $SettingsFile) {
@@ -27,11 +26,48 @@ function Save-Settings {
     $settings | ConvertTo-Json | Set-Content $SettingsFile
 }
 
+function Convert-TextToNotebook {
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]$InputFilePath,
+        [Parameter(Mandatory=$false)]
+        [string]$OutputFilePath
+    )
+
+    $InputFile = Get-Item $InputFilePath
+
+    if (-not $InputFile.Exists) {
+        throw "Input file not found: $($InputFilePath)"
+    }
+
+    # Read content as UTF8
+    $content = Get-Content -Path $InputFilePath -Encoding UTF8 -Raw
+
+    # Replace slanted quotes and apostrophes
+    # Left single quotation mark U+2018
+    # Right single quotation mark U+2019
+    # Left double quotation mark U+201C
+    # Right double quotation mark U+201D
+    # Prime U+2032 (often used as apostrophe or single quote)
+    # Double Prime U+2033 (often used as double quote)
+
+    $content = $content -replace "[‘’\u2032]", "'" # Slanted single quotes and prime to straight apostrophe
+    $content = $content -replace "[“”\u2033]", "`"" # Slanted double quotes and double prime to straight double quote
+
+    # Construct output file path
+    if ([string]::IsNullOrWhiteSpace($OutputFilePath)) {
+        $OutputFilePath = Join-Path -Path $InputFile.DirectoryName -ChildPath "$($InputFile.BaseName)_ansi.txt"
+    }
+
+    # Write content to output file with ANSI encoding
+    $content | Set-Content -Path $OutputFilePath -Encoding Default
+}
+
 $currentSettings = Get-Settings
 
 # --- Form Setup ---
 $form = New-Object System.Windows.Forms.Form
-$form.Text = "Text2Notebook Converter"
+$form.Text = "ConvertQuoteMarks Converter"
 $form.Size = New-Object System.Drawing.Size(600, 320)
 $form.StartPosition = "CenterScreen"
 $form.FormBorderStyle = "FixedDialog"
@@ -168,8 +204,8 @@ $btnConvert.Add_Click({
     $fullOutputPath = Join-Path $outputDir $outputName
 
     try {
-        # Execute the worker script
-        & $WorkerScript -InputFilePath $inputFile -OutputFilePath $fullOutputPath -ErrorAction Stop
+        # Execute the internal function
+        Convert-TextToNotebook -InputFilePath $inputFile -OutputFilePath $fullOutputPath
         
         # Save defaults on success
         Save-Settings -InputDir (Split-Path $inputFile -Parent) -OutputDir $outputDir

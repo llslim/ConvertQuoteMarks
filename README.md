@@ -1,8 +1,8 @@
-# Text2Notebook Converter
+# ConvertQuoteMarks Converter
 
 **Copyright (c) LL Slim LLC**
 
-Text2Notebook Converter is a Windows utility designed to prepare text files for legacy notebook applications. It converts UTF-8 text files to ANSI encoding and normalizes "smart" (slanted) quotes and apostrophes into standard straight quotes.
+ConvertQuoteMarks Converter is a Windows utility designed to prepare text files for legacy notebook applications. It converts UTF-8 text files to ANSI encoding and normalizes "smart" (slanted) quotes and apostrophes into standard straight quotes.
 
 ## Features
 
@@ -23,39 +23,39 @@ Run the included install script to set up the application without building an MS
 
 ### Option 3: Run Directly
 You can run the application without installing it:
-1. Right-click `Text2notebook_WPF.ps1`.
+1. Right-click `ConvertQuoteMarks_WPF.ps1`.
 2. Select **Run with PowerShell**.
 
 ### Option 4: Scoop
 You can install both the GUI and CLI versions using [Scoop](https://scoop.sh/):
 ```powershell
-scoop install https://raw.githubusercontent.com/llslim/text2notebook/main/text2notebook.json
+scoop install https://raw.githubusercontent.com/llslim/ConvertQuoteMarks/main/ConvertQuoteMarks.json
 ```
-Once installed, use `text2notebook` for the GUI or `text2notebook-cli` for the command-line interface.
+Once installed, use `ConvertQuoteMarks` for the GUI or `ConvertQuoteMarks-cli` for the command-line interface.
 
 ## Building the MSI
 
-To build a standalone MSI installer, you need the **WiX Toolset v3.11**.
+To build a standalone MSI installer, you need the **WiX Toolset v3.14**.
 
-1. Install WiX Toolset v3.11.
+1. Install WiX Toolset v3.14.
 2. Open PowerShell in the project directory.
 3. Run the build script:
    ```powershell
    .\WinMSI\Build_MSI.ps1
    ```
-4. The file `Text2Notebook.msi` will be generated in the `WinMSI` folder.
+4. The file `ConvertQuoteMarks.msi` will be generated in the `WinMSI` folder.
 
 ## Uninstallation
 
-*   **If installed via MSI:** Go to Windows Settings > Apps > Installed Apps and uninstall "Text2Notebook Converter".
+*   **If installed via MSI:** Go to Windows Settings > Apps > Installed Apps and uninstall "ConvertQuoteMarks Converter".
 *   **If installed via Script:** Run `.\Uninstall.ps1` in the source directory.
 
 ## File Structure
 
-*   `Text2notebook_WPF.ps1`: The main application script (WPF GUI).
-*   `text2notebook.ps1`: The CLI worker script.
-*   `text2notebook.json`: Scoop package manifest.
-*   `Text2notebook2.ps1`: Legacy WinForms version of the GUI.
+*   `ConvertQuoteMarks_WPF.ps1`: The main application script (WPF GUI).
+*   `ConvertQuoteMarks.ps1`: The CLI worker script.
+*   `ConvertQuoteMarks.json`: Scoop package manifest.
+*   `ConvertQuoteMarks2.ps1`: Legacy WinForms version of the GUI.
 *   `Install.ps1`: Script to install the app to `%LOCALAPPDATA%`.
 *   `Uninstall.ps1`: Script to remove the app and shortcuts.
 *   `WinMSI\Product.wxs`: WiX XML configuration for building the MSI.

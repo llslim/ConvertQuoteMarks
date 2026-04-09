@@ -1,0 +1,39 @@
+{
+    "version": "1.0.0",
+    "description": "Converts UTF-8 text files to ANSI and normalizes typography for legacy notebook software.",
+    "homepage": "https://github.com/llslim/ConvertQuoteMarks",
+    "license": "Proprietary",
+    "url": [
+        "https://github.com/llslim/ConvertQuoteMarks/raw/main/ConvertQuoteMarks_WPF.ps1",
+        "https://github.com/llslim/ConvertQuoteMarks/raw/main/ConvertQuoteMarks.ps1"
+    ],
+    "hash": [
+        "818385932940c10a9b93d5f994a791531335300e44385a501326094a2253dffb",
+        "615d5ecffd2c1dc947b8585b28af04a65acde253d53a5e0fca2247c875cdafe7"
+    ],
+    "bin": [
+        [
+            "ConvertQuoteMarks_WPF.ps1",
+            "ConvertQuoteMarks"
+        ],
+        [
+            "ConvertQuoteMarks.ps1",
+            "ConvertQuoteMarks-cli"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "ConvertQuoteMarks_WPF.ps1",
+            "ConvertQuoteMarks"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/llslim/ConvertQuoteMarks"
+    },
+    "autoupdate": {
+        "url": [
+            "https://github.com/llslim/ConvertQuoteMarks/raw/main/ConvertQuoteMarks_WPF.ps1",
+            "https://github.com/llslim/ConvertQuoteMarks/raw/main/ConvertQuoteMarks.ps1"
+        ]
+    }
+}
