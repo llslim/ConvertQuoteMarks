@@ -51,8 +51,8 @@ function Convert-TextToNotebook {
     # Prime U+2032 (often used as apostrophe or single quote)
     # Double Prime U+2033 (often used as double quote)
 
-    $content = $content -replace "[‘’\u2032]", "'" # Slanted single quotes and prime to straight apostrophe
-    $content = $content -replace "[“”\u2033]", "`"" # Slanted double quotes and double prime to straight double quote
+    $content = $content -replace '[\u2018\u2019\u2032\u02BC\u0060\u00B4\u201a\u201b\uFF07]', "'" # Slanted single quotes, primes, and accents to straight apostrophe
+    $content = $content -replace '[\u201c\u201d\u2033\u201e\u201f\uFF02]', '"' # Slanted double quotes and double prime to straight double quote
 
     # Construct output file path
     if ([string]::IsNullOrWhiteSpace($OutputFilePath)) {

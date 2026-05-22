@@ -7,8 +7,8 @@ This project is a Windows PowerShell application that converts text files from U
 The core conversion logic is found in the `Convert-TextToNotebook` function:
 1.  **Input:** Reads file as UTF-8.
 2.  **Regex Replacement:**
-    *   Replaces `[‘’\u2032]` with `'` (Straight apostrophe).
-    *   Replaces `[“”\u2033]` with `"` (Straight double quote).
+    *   Replaces `'[\u2018\u2019\u2032\u02BC\u0060\u00B4\u201a\u201b\uFF07]'` with `'` (Straight apostrophe).
+    *   Replaces `'[\u201c\u201d\u2033\u201e\u201f\uFF02]'` with `"` (Straight double quote).
 3.  **Output:** Saves file using `Encoding Default` (ANSI).
 
 ## Key Files

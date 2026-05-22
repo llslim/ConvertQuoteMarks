@@ -25,9 +25,9 @@
 
   <Fragment>
     <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-      <Component Id="MainScript" Guid="*">
-        <File Source="ConvertQuoteMarks_WPF.ps1" KeyPath="yes" />
-        <RegistryValue Root="HKCU" Key="Software\LL Slim LLC\ConvertQuoteMarks" Name="installed" Type="integer" Value="1" />
+      <Component Id="MainScript" Guid="E0B195C6-F54E-4643-9833-2895CD33917F">
+        <File Source="..\ConvertQuoteMarks_WPF.ps1" />
+        <RegistryValue Root="HKCU" Key="Software\LL Slim LLC\ConvertQuoteMarks" Name="installed" Type="integer" Value="1" KeyPath="yes" />
         <RemoveFolder Id="CleanUpAppFolder" Directory="INSTALLFOLDER" On="uninstall"/>
       </Component>
     </ComponentGroup>
