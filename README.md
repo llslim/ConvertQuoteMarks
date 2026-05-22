@@ -27,11 +27,16 @@ You can run the application without installing it:
 2. Select **Run with PowerShell**.
 
 ### Option 4: Scoop
-You can install both the GUI and CLI versions using [Scoop](https://scoop.sh/):
+You can install the portable script-based version using [Scoop](https://scoop.sh/):
 ```powershell
 scoop install https://raw.githubusercontent.com/llslim/ConvertQuoteMarks/main/ConvertQuoteMarks.json
 ```
 Once installed, use `ConvertQuoteMarks` for the GUI or `ConvertQuoteMarks-cli` for the command-line interface.
+
+Alternatively, to install the **MSI-based version** (which registers standard Windows shortcuts and registry entries per-user) via Scoop:
+```powershell
+scoop install https://raw.githubusercontent.com/llslim/ConvertQuoteMarks/main/ConvertQuoteMarks-np.json
+```
 
 ## Building the MSI and Releasing
 
@@ -63,7 +68,8 @@ This script will automatically trigger the MSI build and immediately upload it a
 
 *   `ConvertQuoteMarks_WPF.ps1`: The main application script (WPF GUI).
 *   `ConvertQuoteMarks.ps1`: The CLI worker script.
-*   `ConvertQuoteMarks.json`: Scoop package manifest.
+*   `ConvertQuoteMarks.json`: Scoop package manifest (script/portable version).
+*   `ConvertQuoteMarks-np.json`: Scoop package manifest (MSI installer version).
 *   `ConvertQuoteMarks2.ps1`: Legacy WinForms version of the GUI.
 *   `Install.ps1`: Script to install the app to `%LOCALAPPDATA%`.
 *   `Uninstall.ps1`: Script to remove the app and shortcuts.

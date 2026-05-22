@@ -1,0 +1,33 @@
+{
+    "version": "1.0.0",
+    "description": "Converts UTF-8 text files to ANSI and normalizes typography for legacy notebook software (MSI Installer version).",
+    "homepage": "https://github.com/llslim/ConvertQuoteMarks",
+    "license": "Proprietary",
+    "url": "https://github.com/llslim/ConvertQuoteMarks/releases/download/v1.0.0/ConvertQuoteMarks.msi",
+    "hash": "ad87a29604d9e918d04afb2a7436e0cd359712f9eb93ace45fa1fcd654814bdd",
+    "installer": {
+        "file": "msiexec.exe",
+        "args": [
+            "/i",
+            "\"$dir\\ConvertQuoteMarks.msi\"",
+            "/qb",
+            "/norestart"
+        ],
+        "keep": true
+    },
+    "uninstaller": {
+        "file": "msiexec.exe",
+        "args": [
+            "/x",
+            "\"$dir\\ConvertQuoteMarks.msi\"",
+            "/qb",
+            "/norestart"
+        ]
+    },
+    "checkver": {
+        "github": "https://github.com/llslim/ConvertQuoteMarks"
+    },
+    "autoupdate": {
+        "url": "https://github.com/llslim/ConvertQuoteMarks/releases/download/v$version/ConvertQuoteMarks.msi"
+    }
+}

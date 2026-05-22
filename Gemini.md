@@ -22,6 +22,8 @@ The core conversion logic is found in the `Convert-TextToNotebook` function:
 *   **`Uninstall.ps1`**: Removes the artifacts created by the install script.
 *   **`WinMSI\Product.wxs`**: WiX Toolset v3.14 XML definition. Defines a per-user MSI installer that deploys the PowerShell script and sets registry keys for tracking.
 *   **`WinMSI\Build_MSI.ps1`**: Automates `candle.exe` and `light.exe` execution to build the MSI.
+*   **`ConvertQuoteMarks.json`**: Scoop package manifest for portable script-based installation.
+*   **`ConvertQuoteMarks-np.json`**: Scoop package manifest for silent MSI-based installation.
 
 ### Legacy/Dev
 *   **`ConvertQuoteMarks2.ps1`**: A Windows Forms (WinForms) implementation of the GUI.
